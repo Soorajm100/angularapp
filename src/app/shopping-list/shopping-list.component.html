@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-10">
+    
+    <app-shopping-edit></app-shopping-edit>
+    <hr>
+   
+    <ul class="list-group">
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="let ingredient of ingredients; let i = index"
+        (click)="onEditItem(i)"
+      >
+        {{ ingredient.name }} -> ({{ ingredient.amount }})
+        <i hidden>{{this.mpup.set(ingredient.name , false)}}</i>
+        <i hidden>{{this.mpdown.set(ingredient.name , false)}}</i>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-thumbs-up" style="font-size:25px" *ngIf="!mpup[ingredient.name]" (click)  = "togglelike(ingredient.name)"></i>
+          <i class="fa fa-thumbs-up" style="font-size:25px; color:green" *ngIf="mpup[ingredient.name]" (click) ="togglelike(ingredient.name)"></i>
+          &nbsp; &nbsp;
+          <i class="fa fa-thumbs-down" style="font-size:25px" *ngIf="!mpdown[ingredient.name]" (click)  = "toggledislike(ingredient.name)"></i>
+          <i class="fa fa-thumbs-down" style="font-size:25px ; color: red;" *ngIf="mpdown[ingredient.name]" (click)  = "toggledislike(ingredient.name)"></i>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      </a>
+     
+      
+     
+    </ul>
+  </div>
+</div>
